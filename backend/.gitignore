@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Environment Variables
+.env
+
+# Virtual Environments
+venv/
+
+# Django
+*.log
+*.pot
+*.pyc
+
+# Database
+*.sqlite3
+
+# Other
+.DS_Store 
