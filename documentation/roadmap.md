@@ -10,7 +10,7 @@
 
 ### Project Setup:
 
-[ ] Set up version control (Git repository) and CI/CD pipelines.
+[ X] Set up version control (Git repository) and CI/CD pipelines.
 [ ] Establish environments for development, staging, and production.
 [ ] Create a detailed project management board (using Jira, Trello, etc.) to track tasks and sprints.
 
