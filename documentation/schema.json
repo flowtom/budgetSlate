@@ -1,0 +1,430 @@
+BudgetClass {
+        uuid id
+        string class_code
+        string class_name
+        string[] estimate_fields
+        string[] actual_fields
+        string[] additional_fields
+        string quantity_label         %% "# / HOURS" for Class P
+        string calculation_type
+        string[] required_fields
+        boolean has_client_total
+        integer display_order
+        datetime created_at
+        datetime updated_at
+    }
+    
+    BudgetLineItem {
+        uuid id
+        uuid budget_class_id
+        integer line_number
+        string description
+        string unit_type              %% "per deliverable", "per session", etc.
+        
+        %% Common estimate fields
+        decimal(5,2) quantity_estimate  %% Used for both quantity and hours in Class P
+        decimal(10,2) rate_estimate
+        decimal(10,2) total_estimate
+        
+        %% Common actual fields
+        decimal(5,2) hours_actual
+        decimal(10,2) total_actual
+        decimal(10,2) client_total
+        
+        %% Additional fields
+        decimal(10,2) pw_percentage
+        decimal(10,2) pw_amount
+        boolean is_subtotal
+        boolean requires_po
+        string vendor_name
+        string po_number
+        string notes
+        
+        datetime created_at
+        datetime updated_at
+        uuid created_by
+        uuid updated_by
+    }    BudgetClass {
+        uuid id
+        string class_code
+        string class_name
+        string[] estimate_fields
+        string[] actual_fields
+        string time_unit_estimate
+        string time_unit_actual
+        string calculation_type
+        string[] required_fields
+        boolean allows_percentage_rates
+        integer display_order
+        datetime created_at
+        datetime updated_at
+    }    BudgetClass {
+        uuid id
+        string class_code
+        string class_name
+        string sub_class_code         %% M1 or M2
+        string sub_class_name         %% TALENT or ADDITIONAL TALENT EXPENSES
+        string[] estimate_fields
+        string[] actual_fields
+        string time_unit_estimate
+        string time_unit_actual
+        string calculation_type
+        string[] required_fields
+        boolean allows_percentage_rates
+        integer display_order
+        datetime created_at
+        datetime updated_at
+    }
+    
+    BudgetLineItem {
+        uuid id
+        uuid budget_class_id
+        integer line_number
+        string description
+        
+        %% Common estimate fields
+        decimal(5,2) quantity_estimate
+        decimal(5,2) days_estimate
+        decimal(5,2) hours_estimate
+        decimal(10,2) rate_estimate
+        boolean is_percentage_rate
+        decimal(10,2) total_estimate
+        
+        %% Common actual fields
+        decimal(5,2) quantity_actual
+        decimal(5,2) days_actual
+        decimal(5,2) hours_actual
+        decimal(10,2) rate_actual
+        decimal(10,2) total_actual
+        decimal(10,2) client_total
+        
+        %% Additional fields
+        decimal(10,2) pw_percentage
+        decimal(10,2) pw_amount
+        boolean is_subtotal
+        boolean requires_po
+        string vendor_name
+        string po_number
+        string notes
+        
+        datetime created_at
+        datetime updated_at
+        uuid created_by
+        uuid updated_by
+    }    BudgetClass {
+        uuid id
+        string class_code
+        string class_name
+        string[] estimate_fields
+        string[] actual_fields
+        string[] additional_fields
+        string time_unit_estimate     %% 'DAYS' or 'HOURS'
+        string time_unit_actual       %% 'DAYS' or 'HOURS'
+        string calculation_type
+        string[] required_fields
+        boolean has_client_total
+        integer display_order
+        datetime created_at
+        datetime updated_at
+    }    BudgetLineItem {
+        uuid id
+        uuid budget_class_id
+        integer line_number
+        string description
+        
+        %% Common estimate fields - Time measurements (2 decimal places)
+        decimal(5,2) quantity_estimate
+        decimal(5,2) days_estimate
+        decimal(5,2) hours_estimate        %% Used in Class K
+        
+        %% Money fields (2 decimal places)
+        decimal(10,2) rate_estimate
+        decimal(10,2) total_estimate
+        
+        %% Class B specific estimate fields
+        decimal(10,2) ot_rate_estimate
+        decimal(5,2) ot_hours_estimate     %% Time measurement
+        
+        %% Common actual fields - Time measurements (2 decimal places)
+        decimal(5,2) quantity_actual
+        decimal(5,2) days_actual
+        decimal(5,2) hours_actual          %% Used in Class K
+        
+        %% Money fields (2 decimal places)
+        decimal(10,2) rate_actual
+        decimal(10,2) total_actual
+        decimal(10,2) client_total         %% Class K specific
+        
+        %% Additional money fields (2 decimal places)
+        decimal(10,2) pw_percentage
+        decimal(10,2) pw_amount
+        
+        %% Flags and metadata
+        boolean is_subtotal
+        boolean requires_po
+        string vendor_name
+        string po_number
+        string notes
+        
+        datetime created_at
+        datetime updated_at
+        uuid created_by
+        uuid updated_by
+    }    BudgetClass {
+        uuid id
+        string class_code
+        string class_name
+        string[] estimate_fields
+        string[] actual_fields
+        string[] additional_fields
+        string calculation_type
+        string[] required_fields
+        boolean typically_empty
+        integer display_order
+        datetime created_at
+        datetime updated_at
+    }
+    
+    BudgetLineItem {
+        uuid id
+        uuid budget_class_id
+        integer line_number
+        string description
+        
+        %% Common estimate fields
+        decimal quantity_estimate
+        decimal days_estimate
+        decimal hours_estimate        %% Used in Class K
+        decimal rate_estimate
+        decimal total_estimate
+        
+        %% Class B specific estimate fields
+        decimal ot_rate_estimate
+        decimal ot_hours_estimate
+        
+        %% Common actual fields
+        decimal quantity_actual
+        decimal days_actual
+        decimal hours_actual          %% Used in Class K
+        decimal rate_actual
+        decimal total_actual
+        
+        %% Class K specific fields
+        decimal client_total          %% New field for Class K
+        
+        %% Additional fields
+        decimal pw_percentage
+        decimal pw_amount
+        boolean is_subtotal
+        boolean requires_po
+        string vendor_name
+        string po_number
+        string notes
+        
+        datetime created_at
+        datetime updated_at
+        uuid created_by
+        uuid updated_by
+    }    BudgetClass {
+        uuid id
+        string class_code
+        string class_name
+        string[] estimate_fields
+        string[] actual_fields
+        string calculation_type
+        string[] required_fields
+        boolean typically_empty
+        integer display_order
+        datetime created_at
+        datetime updated_at
+    }
+    
+    BudgetLineItem {
+        uuid id
+        uuid budget_class_id
+        integer line_number
+        string description
+        
+        %% Common estimate fields
+        decimal quantity_estimate      %% Optional in Class I
+        decimal days_estimate         %% Optional in Class I
+        decimal rate_estimate         %% Primary field for Class I
+        decimal total_estimate
+        
+        %% Class B specific estimate fields
+        decimal ot_rate_estimate
+        decimal ot_hours_estimate
+        
+        %% Common actual fields
+        decimal quantity_actual
+        decimal days_actual
+        decimal rate_actual
+        decimal total_actual          %% Only actual field used in Class I
+        
+        %% Additional fields
+        decimal pw_percentage
+        decimal pw_amount
+        boolean is_subtotal
+        boolean requires_po
+        string vendor_name
+        string po_number
+        string notes
+        
+        datetime created_at
+        datetime updated_at
+        uuid created_by
+        uuid updated_by
+    }erDiagram
+    User ||--o{ Job : manages
+    User ||--o{ ActivityLog : generates
+    User ||--o{ AuditLog : generates
+    
+    Client ||--o{ Job : has
+    
+    Job ||--o{ Budget : has
+    Job ||--o{ PayrollLog : has
+    Job ||--o{ PurchaseOrder : has
+    Job ||--o{ CoverSheet : has
+    
+    Budget ||--o{ BudgetVersion : has
+    BudgetVersion ||--o{ BudgetPage : contains
+    BudgetPage ||--o{ BudgetClass : contains
+    BudgetClass ||--o{ BudgetLineItem : contains
+
+    User {
+        uuid id
+        string email
+        string name
+        datetime created_at
+    }
+
+    Client {
+        uuid id
+        string name
+        datetime created_at
+    }
+
+    Job {
+        uuid id
+        string project_title
+        string production_company
+        string contact_phone
+        jsonb core_team
+        string director
+        string producer
+        string writer
+        integer pre_prod_days
+        integer build_days
+        integer pre_light_days
+        integer studio_days
+        integer location_days
+        integer wrap_days
+        string status
+        string[] tags
+        datetime created_at
+    }
+
+    Budget {
+        uuid id
+        string name
+        string status
+        datetime created_at
+    }
+
+    BudgetVersion {
+        uuid id
+        integer version_number
+        string status
+        decimal total_estimate
+        decimal total_actual
+        datetime created_at
+    }
+
+    BudgetPage {
+        uuid id
+        string page_code
+        string page_name
+        integer page_number
+        datetime created_at
+    }
+
+    BudgetClass {
+        uuid id
+        string class_code
+        string class_name
+        string[] estimate_fields
+        string[] actual_fields
+        string calculation_type
+        boolean is_optional
+        boolean typically_empty
+        integer display_order
+        datetime created_at
+        datetime updated_at
+    }
+
+    BudgetLineItem {
+        uuid id
+        integer line_number
+        string description
+        decimal quantity_estimate
+        decimal days_estimate
+        decimal rate_estimate
+        decimal total_estimate
+        decimal ot_rate_estimate
+        decimal ot_hours_estimate
+        decimal quantity_actual
+        decimal days_actual
+        decimal rate_actual
+        decimal total_actual
+        decimal ot_rate_actual
+        decimal ot_hours_actual
+        decimal pw_percentage
+        decimal pw_amount
+        boolean is_subtotal
+        string notes
+    }
+
+    PayrollLog {
+        uuid id
+        integer line_number
+        string payee_name
+        integer days_worked
+        decimal day_rate
+        decimal total_base
+        string status
+        datetime created_at
+    }
+
+    PurchaseOrder {
+        uuid id
+        integer line_number
+        string vendor_name
+        string po_number
+        decimal amount
+        string status
+        datetime created_at
+    }
+
+    CoverSheet {
+        uuid id
+        decimal firm_bid_total
+        decimal firm_bid_actual
+        decimal pw_subtotal
+        decimal grand_total
+        datetime created_at
+    }
+
+    ActivityLog {
+        uuid id
+        string action
+        jsonb changes
+        datetime created_at
+    }
+
+    AuditLog {
+        uuid id
+        string event_type
+        jsonb old_value
+        jsonb new_value
+        datetime created_at
+    }
