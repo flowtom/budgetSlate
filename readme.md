@@ -146,21 +146,95 @@ The application will allow producers to create budgets, compare estimates vs. ac
 ✅ **Audit log stored for one year**  
 ✅ **Lock editing to one user at a time in MVP**  
 
----
+## Environments
 
-## 7. Next Steps  
-1. **Confirm MVP scope** – Does anything need to be added or adjusted?  
-2. **Define the tech stack** – Which database, framework, and hosting solution should we use?  
-3. **Outline development roadmap** – Prioritize features and set milestones.  
+The project uses three environments:
 
-"""
+### Development (dev)
+- URL: dev.budgetslate.com (TBD)
+- Branch: `develop`
+- For active development work
+- Features in progress
+- Automated deployments from develop branch
+- May be unstable
 
-# versioning
+### Staging (stage)
+- URL: staging.budgetslate.com (TBD)
+- Branch: `staging`
+- Pre-production testing
+- Feature complete
+- For QA and client review
+- Mirrors production environment
 
-# Format:
+### Production (prod)
+- URL: budgetslate.com (TBD)
+- Branch: `main`
+- Live production environment
+- Stable releases only
+- Requires approval for deployments
+- Protected branch
+
+## Branch Strategy
+
+### Main Branches
+- `main` - Production code
+- `staging` - Pre-production testing
+- `develop` - Active development
+
+### Feature Branches
+Format: `feature/description`
+Examples:
+- `feature/user-auth`
+- `feature/budget-import`
+- `feature/clickup-integration`
+
+### Bug Fix Branches
+Format: `fix/description`
+Examples:
+- `fix/login-validation`
+- `fix/calculation-error`
+
+### Workflow
+1. Create feature branch from `develop`:
+```bash
+git checkout develop
+git pull origin develop
+git checkout -b feature/your-feature
+```
+
+2. Work on feature and commit using conventional commits:
+```bash
+git commit -m "feat: add CI pipeline"
+```
+
+
+3. Push to remote and create PR to `develop`:
+```bash
+git push -u origin feature/your-feature
+```
+4. After PR review and merge to `develop`, test in dev environment
+
+5. Merge `develop` to `staging` for QA:
+```bash
+git checkout staging
+git pull origin staging
+git merge develop
+git push origin staging
+```
+6. After QA approval, merge `staging` to `main`:
+```bash
+git checkout main
+git pull origin main
+git merge staging
+git push origin main
+```
+
+## versioning
+
+### Format:
 type(scope): description
 
-# Common types:
+### Common types:
 git commit -m "feat: add CI pipeline"        # New feature
 git commit -m "fix: correct package.json"    # Bug fix
 git commit -m "docs: update README"          # Documentation
