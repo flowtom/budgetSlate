@@ -1,6 +1,7 @@
 {
   "name": "budgetslate",
   "version": "1.1.0",
+  "private": true,
   "dependencies": {
     "standard-version": "^9.5.0"
   },

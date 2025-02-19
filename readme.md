@@ -154,3 +154,18 @@ The application will allow producers to create budgets, compare estimates vs. ac
 3. **Outline development roadmap** – Prioritize features and set milestones.  
 
 """
+
+# versioning
+
+# Format:
+type(scope): description
+
+# Common types:
+git commit -m "feat: add CI pipeline"        # New feature
+git commit -m "fix: correct package.json"    # Bug fix
+git commit -m "docs: update README"          # Documentation
+git commit -m "chore: update dependencies"   # Maintenance
+git commit -m "style: format code"           # Formatting
+git commit -m "refactor: simplify logic"     # Code refactoring
+git commit -m "test: add unit tests"         # Testing
+git commit -m "perf: improve loading time"   # Performance
