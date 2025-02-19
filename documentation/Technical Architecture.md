@@ -220,3 +220,52 @@ Rationale:
 
 ## Conclusion
 This architecture provides a solid foundation for the AICP Budget Management System while maintaining flexibility for future growth. The chosen stack balances development speed, maintenance ease, and system robustness.
+
+
+flowchart TD
+    subgraph Frontend[Frontend Layer]
+        React[React App]
+        RS[React-Spreadsheet]
+        RQ[React Query]
+    end
+
+    subgraph Backend[Backend Layer]
+        Django[Django + DRF]
+        Celery[Celery Workers]
+        Redis[Redis Cache/Queue]
+    end
+
+    subgraph Data[Data Layer]
+        PG[(PostgreSQL)]
+        Audit[Audit Logs]
+    end
+
+    subgraph Monitoring[Monitoring Layer]
+        Sentry[Sentry Error Tracking]
+        DD[DataDog Metrics]
+        Logs[JSON Logs]
+    end
+
+    subgraph External[External Services]
+        direction LR
+        iPaaS[n8n iPaaS]
+        ClickUp[ClickUp API]
+        Sheets[Google Sheets API]
+    end
+
+    React --> RQ
+    RS --> RQ
+    RQ --> Django
+    Django --> Redis
+    Django --> PG
+    Celery --> Redis
+    Celery --> PG
+    Django --> Make
+    Make --> ClickUp
+    Make --> Sheets
+    Django --> Sentry
+    Django --> DD
+    Django --> Logs
+    Celery --> Sentry
+    Celery --> DD
+    Celery --> Logs

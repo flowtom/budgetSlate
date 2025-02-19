@@ -1,23 +1,25 @@
 1. Establishing the Foundations (Sprint 0 - Planning & Setup)
 Kick-Off & Alignment:
 
-Host a project kick-off meeting with all stakeholders (engineers, designers, product managers) to review the PRD and our overall vision.
-Confirm our technical stack: Frontend (React, Vue, or Angular), Backend (Node.js/Express, Django, etc.), Database (PostgreSQL or similar), and integrations (ClickUp API, Google Sheets API).
+[ ] Host a project kick-off meeting with all stakeholders (engineers, designers, product managers) to review the PRD and our overall vision.
+[ X] Confirm our technical stack: Frontend (React, Vue, or Angular), Backend (Node.js/Express, Django, etc.), Database (PostgreSQL or similar), and integrations (ClickUp API, Google Sheets API).
+
 Project Setup:
 
-Set up version control (Git repository) and CI/CD pipelines.
-Establish environments for development, staging, and production.
-Create a detailed project management board (using Jira, Trello, etc.) to track tasks and sprints.
+[ ] Set up version control (Git repository) and CI/CD pipelines.
+[ ] Establish environments for development, staging, and production.
+[ ] Create a detailed project management board (using Jira, Trello, etc.) to track tasks and sprints.
+
 2. Data Modeling & Core Infrastructure (Sprint 1)
 Database & Schema Design:
 
-Create ER diagrams for our core entities: Budgets, Clients, Jobs, Users, Payments, Activity Logs, and Audit Logs.
-Develop migration scripts and set up the database.
-Document relationships and key fields (e.g., versioning, tagging).
+[ X] Create ER diagrams for our core entities: Budgets, Clients, Jobs, Users, PayrollLogs, PurchaseOrders, Activity Logs, and Audit Logs.
+[ ] Develop migration scripts and set up the database.
+[ X] Document relationships and key fields (e.g., versioning, tagging).
 Authentication & User Management:
 
-Build the user authentication system (login, signup, password recovery) with JWT or session-based auth.
-Create basic user roles—even if MVP permissions are minimal—to allow future scaling.
+[ ] Build the user authentication system (login, signup, password recovery) with JWT or session-based auth.
+[ ] Create basic user roles—even if MVP permissions are minimal—to allow future scaling.
 3. Building Core Budget Management Features (Sprint 2)
 Spreadsheet-like Interface:
 
